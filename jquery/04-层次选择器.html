@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:200px;
+            height:200px;
+            border: 1px solid black;
+        }
+        .mini{
+            width:70px;
+            height:70px;
+            border:1px solid red;
+        }
+    </style>
+    <script src="jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <h2>13142</h2>
+    <h3>314</h3>
+    <div class="box">
+        <p>12141</p>
+        <div class="mini">class是mini</div>
+    </div>
+    <h2>你好</h2>
+    <h2>大家</h2>
+    <h3>edoejfo</h3>
+    <script>
+        $(function () {
+            //1.给body的所有div(子孙,不只是儿子)设置为边框为圆
+            $("body div").css("border-radius",'50%');
+
+            //2.给div元素内部的子元素(只有儿子,没有孙子)div改变字体为红色
+            $("div>div").css("color",'red')
+
+            //3.给class为box的下一个h2字体大小改为40
+            $("div+h2").css("font-size",40);
+
+            //4.给div的后面所有h2兄弟背景色设为红色
+            $("div~h2").css('background-color','red');
+
+            //5.给div所有兄弟h3设置背景颜色为紫色
+            $(".box").siblings("h3").css("background-color",'purple')
+        })
+    </script>
+</body>
+</html>

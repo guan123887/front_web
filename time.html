@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const d=new Date();
+        let y=d.getFullYear(); 
+        let m=d.getMonth() + 1 ;
+        let dd=d.getDate(); //获取当前日
+        let h=d.getHours()//获取当前小时
+        let min=d.getMinutes()//获取当前分
+        let sec=d.getSeconds()//获取当前秒
+        let date=`${y}-${m}-${dd} ${h}:${min}:${sec}`;
+        console.log(date);
+    </script>
+</body>
+</html>

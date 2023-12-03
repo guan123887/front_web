@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./angular.min.js"></script>
+</head>
+<body>
+<!--1.普通数据-->
+<!--<div ng-app="" ng-init="quantity=1;cost=5">-->
+<!--    <p>总价: {{quantity*cost}}</p>-->
+<!--</div>-->
+<!--2.定义一个对象-->
+<!--<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">-->
+<!--    <p>姓为: {{person.lastName}}</p>-->
+<!--</div>-->
+<!--3.定义一个数组-->
+<!--<div ng-app="" ng-init="points=[1,15,20,19,16]">-->
+<!--    <p>第三个值为: {{points[2]}}</p>-->
+<!--</div>-->
+
+<!--ng-bind 实现-->
+<div ng-app="" ng-init="points=[1,15,20,19,16]">
+    <p><span ng-bind="{{points[2]}}"></span></p>
+</div>
+</body>
+</html>

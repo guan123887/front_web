@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册界面</title>
+  <script type="text/javascript">
+    window.onload=function(){
+      var username=document.querySelector('#username');
+      var emailname=document.querySelector('#email');
+      var phonename=document.querySelector('#phone');
+      username.onblur=function(){
+        var userValue=username.value;
+        //将usernameValue提交给服务器，有服务器进行唯一性的校验
+        //1.创建对象  兼容处理
+        var xhr=null;
+        if(window.XMLHttpRequest){
+          xhr=new XMLHttpRequest();
+        }else{
+          xhr=new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        xhr.open('get','./server/checkUsername.php?username='+userValue,true);   //false  表示同步，只能一个一个任务处理
+
+        xhr.send(null);
+        //如果是同步，不用加onreadystatechange 因为返回回来时，readystate已经等于4了，不会发生改变。
+
+        // if(xhr.readyState==4){
+        //   if(xhr.status==200){
+        //   var result=xhr.responseText;
+        //     if(result=='ok'){
+        //       document.querySelector('#userresult').innerText='用户名可用';
+        //     }else{
+        //       document.querySelector('#userresult').innerText='用户名不可用';            
+        //     }
+
+        //   }
+        // }
+
+        xhr.onreadystatechange=function(){
+          if(xhr.readyState==4){
+            if(xhr.status==200){
+              var result=xhr.responseText;
+              if(result=='ok'){
+                document.querySelector('#userresult').innerText='用户名可用';
+              }else{
+                document.querySelector('#userresult').innerText='用户名不可用';            
+              }
+
+              }
+            }
+          }
+      }
+      emailname.onblur=function(){
+        var emailValue=emailname.value;
+        //将usernameValue提交给服务器，有服务器进行唯一性的校验
+        //1.创建对象  兼容处理
+        var xhr=null;
+        if(window.XMLHttpRequest){
+          xhr=new XMLHttpRequest();
+        }else{
+          xhr=new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        var param='e='+emailValue;
+        xhr.open('post','./server/checkEmailname.php',true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(param);
+
+        xhr.onreadystatechange=function(){
+          if(xhr.readyState==4){
+            if(xhr.status==200){
+              var result=xhr.responseText;
+              var email_result=document.getElementById('emailresult');
+              if(result==0){
+                  email_result.innerText='邮箱可以使用';  
+              }else{
+                  email_result.innerText='邮箱已经注册';             
+              }
+
+              }
+            }
+          }
+      }
+
+      phonename.onblur=function(){
+        var phoneValue=phonename.value;
+        var xhr=null;
+        if(window.XMLHttpRequest){
+          xhr=new XMLHttpRequest();
+        }else{
+          xhr=new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        xhr.open('post','./server/checkPhonename.php',true);
+        var param='p='+phoneValue;
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(param);
+
+        xhr.onreadystatechange=function(){
+          if(xhr.readyState==4){
+            if(xhr.status==200){
+              var result=xhr.responseText;
+              result=JSON.parse(result);         
+              var phone_result=document.querySelector('#phoneresult');
+              if(result.status==0){
+                console.log(result.status)
+                  phone_result.innerText=result.message.tips+','+result.message.phonefrom;               
+              }else{
+                  phone_result.innerText=result.message;             
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+    <h1>注册界面</h1>
+    <form action='' method='get'>
+      用户名:<input type="text" id='username'><span id='userresult'></span><br>
+      邮箱:<input type="text" id='email'><span id='emailresult'></span><br>
+      手机号:<input type="text" id='phone'><span id='phoneresult'></span><br>
+    </form>
+</body>
+</html>

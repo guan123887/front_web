@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='./jquery-3.2.1/jquery-3.2.1.min.js'></script>
+    <style>
+        .box{
+            width:100px;
+            height:100px;
+            background: yellow;
+            display: inline-block;
+        }
+
+        .colored{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="divTest">
+        <ul>
+            <li>投资</li>
+            <li>理财</li>
+            <li>成熟</li>
+            <li>担当</li>
+            <input type="radio" value="学习" checked="checked">学习
+            <input type="radio" value="不学习">不学习
+            <h1>Header 1</h1>
+            <h2>Header 2</h2>
+        </ul>
+    </div>
+
+    <div class="box"></div>
+    <div class="mover box"></div>
+    <div class="box"></div>
+    <button id="run">点击</button>
+    <script>
+        $(function () {
+            //1.:first:选取第一个元素
+            // alert($("li:first").html())
+            //2.:last:选取最后一个元素
+            // alert($("li:last").html())
+            //3.:not(selector): 去除所有与给定选择器匹配的元素
+            // alert($("ul input:not(:checked)").val())   //选择input中没有被选中的标签的值
+            //4.:even: 选取索引值为偶数的所有元素 从0开始计数
+            // alert($("li:even").length)
+            // alert($("li:even").get(1).innerHTML);   //获取匹配到的第二个值
+            //5. :odd:选取索引值为奇数的所有元素  从0开始计数
+            // alert($("li:odd").length)
+            //6. :eq(index):  匹配一个给定索引值元素 从0开始
+            // alert($("li:eq(2)").html())     //获取第三个li的值
+            //7.  :gt(index): 匹配大于给定索引值元素 从0开始
+            // alert($("li:gt(1)").length)     //获取大于下标1的li的个数
+            //8. :lt(index):  匹配小于给定索引值元素 从0开始
+            // alert($("li:lt(2)").length)     //获取小于下标2的li的个数
+            //9. :header:  选择h1,h2,h3一类的标签
+            // alert($(":header").get(1).innerHTML)    //获取匹配到的含h1,h2,h3标签中的第二个标签的值
+            //10. :animated: 匹配正在执行动画效果的元素
+            $("#run").click(function () {
+                $(".mover:animated").toggleClass('colored');
+            })
+
+            function  animatedId() {
+                $(".mover").slideToggle('slow',animatedId);
+            }
+            animatedId();
+        })
+    </script>
+</body>
+</html>

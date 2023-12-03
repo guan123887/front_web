@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<a href="#" hreflang="en">英文</a>
+<a href="#" hreflang="zh">中文</a>
+<input name="man-news">
+<input name="milk man">
+<input name="letterman2">
+<input name="newmilk">
+<span name="ghjk" name1="fghj">123</span>
+<script>
+    //1.$("[attribute='value']")  选择指定属性值等于给定字符串或以该字符串为前缀(该字符串后跟一个连字符"-")的元素
+    $(function () {
+        $("[hreflang=en]").css("color","red");  //为属性值为en的标签设置红色字体
+    })
+
+    //2.$("[attribute*='value']")  选择指定属性具有包含一个给定的子字符串的元素。 (选择给定的属性是以包含某些值得元素)
+    $(function () {
+        $("[name*=man]").css('background-color','purple');  //设置属性值包含man的标签背景为紫色
+    })
+
+    //3.$("[attribute~='value']") 选择指定属性用空格分隔的值中包含一个给定值的元素
+    $(function () {
+        $("[name~=man]").val('mr.man is in it');//为属性值中间有空格间隔的man属性值设置属性值
+    })
+
+    //4.$("[attribute!='value']") 选择不存在指定属性，或者指定的属性值不等于给定值的元素
+
+    //5.$("[attribute$='value']")   选择指定属性是以给定值结尾的元素，这个比较区分大小写
+    $(function () {
+        $("[name$=2]").css('font-size',20); //设置属性值以2结尾的元素字体大小为20
+    })
+
+    //6.$("[attribute^='value']")       选择指定属性是以给定字符串开始的元素
+    $(function () {
+        $("[name^=letter]").val('123456')    //属性值以letter开头的元素设置值为123456
+    })
+
+    //7.$("[attribute]")    选择所有具有指定属性的元素，该属性可以是任何值
+    $(function () {
+        $("[hreflang]").css('text-decoration','overline')
+    })
+
+    //8.$("[attributeFilter1][attributeFilter2][attributeFilterN]")  选择匹配所有指定的属性筛选器的元素
+    $(function () {
+        $("span[name^='gh'][name1$='hj']").html('你好啊')
+    })
+</script>
+</body>
+</html>

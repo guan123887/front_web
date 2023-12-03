@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="test">
+        <ul>
+            <li>chenhao投资</li>
+            <li>zhangsan</li>
+            <li></li>
+            <li>理财</li>
+            <li><a href="#">投资</a></li>
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            //1.:contains(text): 匹配包含给定文本的元素
+            // alert($("li:contains('投资')").html())
+            //2. :empty: 匹配所有不包含子元素或者文本的空元素
+            // alert($("li:empty").length);
+            //3.  :has(selector): 匹配含有选择器所匹配元素的元素
+            alert($("li:has(a)").html())
+            //4. :parent: 选取含有子元素或者文本的元素
+            alert($("li:parent").length);
+        })
+    </script>
+</body>
+</html>

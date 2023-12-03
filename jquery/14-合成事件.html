@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            font-size:12px;
+            /*line-height: 130%;*/
+            padding: 60px;
+        }
+        #panel{
+            width:300px;
+            border: 1px solid #0050D0;
+        }
+
+        .head{
+            height:24px;
+            line-height: 24px;
+            text-indent: 10px;
+            background: #96e555;
+            cursor:pointer;
+            width: 100%;
+        }
+        .content{
+            padding: 10px;
+            text-indent: 24px;
+            border-top: 1px solid #0050D0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="panel">
+    <h5 class="head">什么是jquery?</h5>
+    <div class="content">
+        在本教程中，您将通过教程以及许多在线实例，学到如何通过使用 jQuery 应用 JavaScript 效果。
+        jQuery 是一个“写的更少，但做的更多”的轻量级 JavaScript 库。
+        基本上，您将学习到如何选取 HTML 元素，以及如何对它们执行类似隐藏、移动以及
+    </div>
+</div>
+<script>
+
+    $(function() {
+        //hover的用法
+        // $(".head").hover(
+        //     function() {
+        //         $(this).next().show();
+        // },
+        //     function() {
+        //         $(this).next().hide();
+        // })
+
+        //click事件
+        $(".head").click(function () {
+            $(this).next().toggle();
+        })
+    })
+</script>
+</body>
+</html>

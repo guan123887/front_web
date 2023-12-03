@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+</head>
+<body>
+<form id="myform">
+    <input type="text" name="myname" value="chenhao"><br>
+    <input type="text" name="myage" value="34" disabled="disabled">
+    <input type="text" nmae="pass" value="123"><br>
+    <input type="text" name="dog" value="阿旺" disabled="disabled"><br>
+    <input type="checkbox" name="hobby" value="football" checked="checked">足球<br>
+    <input type="checkbox" name="hobby" value="basketball" checked="checked">篮球<br>
+    <input type="checkbox" name="hobby" value="tennis" checked="checked">网球<br>
+    <select name="test" multiple="'multiple">
+        <option selected="selected">浙江</option>
+        <option>湖南</option>
+        <option>北京</option>
+        <option>天津</option>
+        <option selected="selected">上海</option>
+    </select>
+</form>
+<script>
+    //$(.test :hidden)  为class为'test' 的元素内的所有隐藏元素
+    // $(.test:hidden) 选取隐藏的class为'test'的元素。
+    $(function () {
+        //1. :disabled  选取所有不可用元素
+        // alert($(":text:disabled").length)
+        //2. :enabled 选取所有可用元素
+        // alert($(":text:enabled").length)
+        //3. :checked 选取所有被选中的元素(单选框和复选框)
+        // alert($(":checkbox:checked").length)
+        //4. :selected  选取所有被选中的选项元素(下拉列表)
+        alert($("select :selected").text())
+    })
+
+</script>
+</body>
+</html>

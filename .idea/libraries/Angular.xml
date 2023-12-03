@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Angular" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="Node.js Core Modules" />
+      <option name="frameworkVersion" value="1.5.8" />
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/AngularJS/angular.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

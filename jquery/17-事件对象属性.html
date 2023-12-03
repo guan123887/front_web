@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+</head>
+<body>
+<a href="https://www.baidu.com">点击我</a>
+<input type="button" value="点击我">
+<script>
+    $(function () {
+        $('a').click(function (event) {
+            // alert(event.type);  //获取事件类型
+            var tg=event.target;    //获取触发事件的事件源
+            // alert(tg.href)
+            // alert(event.pageX+','+event.pageY)
+            return false;
+        })
+
+        $('a').mousedown(function (event) {
+            alert(event.which); //获取鼠标按键 左键为1 中键为2 右键为3
+            return false;
+        })
+
+        $('input').keyup(function (event) {
+            alert(event.keyCode)    //或者使用event.which
+        })
+    })
+</script>
+</body>
+</html>

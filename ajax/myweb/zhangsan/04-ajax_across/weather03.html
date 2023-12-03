@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+    <script type="text/javascript">
+    function foo(data){
+      console.log(data);
+    }
+  </script>
+<!--   <script type="text/javascript" src="http://www.lisi.com/data.php?city=Beijing"></script> -->
+  <script type="text/javascript">
+    window.onload=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var cityName=document.querySelector('#city').value;
+
+        var script=document.createElement('script');
+        script.src='http://www.lisi.com/data.php?city='+cityName;
+
+        var head=document.querySelector('head');
+        head.appendChild(script);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>天气信息查询</h1>
+  <input type="text" id='city' placeholder="请输入城市名称">
+  <input type="button" id='btn' value='查询'>
+  <p id=""></p>
+</body>
+</html>

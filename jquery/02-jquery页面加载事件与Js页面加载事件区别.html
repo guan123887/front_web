@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <script>
+        /*
+        jquery对象与Js对象之间的转换
+        jquery的本质是一个数组，数组包含了多个dom对象(document对象)
+        var jquery={dom对象,dom对象,dom对象,dom对象,dom对象,...}
+        注意:
+        jquery对象不能使用dom对象中的属性和方法
+        dom对象也不能使用jquery对象中的属性和方法
+        但是两者可以相互转换
+
+        转换格式
+        1.dom对象-->jquery对象:穿马甲
+        格式:
+            dom对象--->$(dom对象);
+         2.jquery对象--->dom对象：脱马甲,去除jquery数组中的dom对象
+         格式：
+            jquery对象-->jquery对象[索引]
+            jqeury对象--->jquery对象.get(索引)
+        */
+
+        $(function () {
+            /*
+                使用dom对象获取id是myDiv的标签
+                获取标签体:dom对象 .innerHTML
+                设置标签体:dom对象 .innerHTML=新的标签体
+             */
+
+            var myDivEle=document.getElementById('myDiv');
+            // alert(myDivEle.innerHTML);
+
+            /*
+            使用jquery对象获取id是myDiv的标签
+            在jquery对象中把设置标签体和获取标签体封装为了一个函数，函数名叫html
+            获取标签体:jquery对象 .html();
+            设置标签体: jquery对象 .html(新的标签体);
+             */
+            var $myDivEle=$("#myDiv");
+            // alert($myDivEle.html());
+
+            //1.dom对象-->jquery对象;穿马甲
+            var $mm=$(myDivEle);
+            $mm.html("你是一个div");
+            //$mm.innerHTML="他是一个div";    //jquery对象不能使用dom对象的属性和方法
+           // 2.jquery对象-->dom对象;  脱马甲  取出jquery数组中的dom对象
+            var d1=$myDivEle[0];
+            d1.innerHTML="他是一个div";
+
+            var d2=$myDivEle.get(0);
+            alert(d2.innerHTML);
+        })
+    </script>
+    <div id="myDiv">我是一个div</div>
+
+</body>
+</html>

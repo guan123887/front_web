@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    *{
+      padding: 0;
+      margin:0;
+    }
+
+    #container{
+      width:400px;
+      min-height: 300px;
+      background: lightgreen;
+      margin:auto;
+      padding:10px;
+      text-align: center;
+    }
+
+    ul{
+      list-style: none;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script type="text/javascript" src='jquery1.x.js'></script>
+  <script src='./template-web.js'></script>
+  <script type="text/html" id='Weathertemplate'>
+    {{each weather value i}}
+      <span>日期:{{value.date}}</span>
+      {{if value.dawn}}
+        <ul>
+          <li>黎明天气:{{value.info.dawn[1]}}</li>
+          <li>黎明温度:{{value.info.dawn[0]}}</li>
+          <li>黎明风向:{{value.info.dawn[3]}}</li>
+          <li>黎明风速:{{value.info.dawn[2]}}</li>
+        </ul>   
+      {{/if}}
+        <ul>
+          <li>白天天气:{{value.info.day[1]}}</li>
+          <li>白天温度:{{value.info.day[0]}}</li>
+          <li>白天风向:{{value.info.day[3]}}</li>
+          <li>白天风速:{{value.info.day[2]}}</li>
+        </ul>         
+        <ul>
+          <li>晚上天气:{{value.info.night[1]}}</li>
+          <li>晚上温度:{{value.info.night[0]}}</li>
+          <li>晚上风向:{{value.info.night[3]}}</li>
+          <li>晚上风速:{{value.info.night[2]}}</li>
+        </ul>
+    {{/each}}  
+  </script>
+  <script type="text/javascript">
+    $(function(){
+      $("#query").click(function(){
+        //将用户所选择的城市信息的天气预报情况查询出来
+        var code=$('#city').val();
+        $.ajax({
+          url:'http://cdn.weather.hao.360.cn/sed_api_weather_info.php',
+          data:{
+            app:'hao360',
+            code:code
+          },
+          jsonp:'_jsonp',
+          dataType:"jsonp",
+          success:function(data){
+            console.log(data);
+            var html=template('Weathertemplate',data);
+            $("#info").html(html);          
+          }
+        })
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="container">
+    <select id="city">
+      <option value="101010100">北京</option>
+      <option value="101020100">上海</option>
+      <option value="101280101">广州</option>
+      <option value="101280601">深圳</option>
+    </select>
+
+    <input type="button" id='query' value='查询'>
+
+    <div id="info">    
+    </div>
+  </div>
+</body>
+</html>

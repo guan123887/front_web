@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <span>Corey</span>
+        <span>Yehuda</span>
+        <span>Adam</span>
+        <span>Todd</span>
+    </div>
+
+    <div>
+        <b>Nobody</b>
+        <span>Jorn</span>
+        <span>Scott</span>
+        <span>Timo</span>
+    </div>
+    <div>
+        <b>chenhao</b>
+    </div>
+    <div>
+        <b>zhangsan</b>
+        <b>xiaoqiang</b>
+        <i>wangwu</i>
+        <span>134</span>
+    </div>
+    <script>
+        $(function () {
+
+            //注释: html()只显示第一个匹配元素内容，text()是所有匹配元素内容
+
+            
+            //1.:first-child 选取每个父元素下的第一个子元素
+            // alert($("div span:first-child").text());
+            //2. :first-of-type  选取同名兄妹节点的第一个子元素的所有元素
+            // alert($("div span:first-of-type").text())
+            //3. :last-child 选取每个父元素下的最后一个子元素
+            // alert($("div span:last-child").text())
+            //4. :last-of-type 选取同名兄妹节点的最后一个子元素的所有元素
+            // alert($("div span:last-of-type").text())
+            //5.  :only-child 选取父元素中具有唯一的子元素的所有元素
+            // alert($("div b:only-child").text(())
+            //6.  :only-of-type  选取前后没有同名兄妹节点的子元素的所有元素
+            alert($("div b:only-of-type").text())
+            //7.  :nth-child(index/even/odd)  选取每个父元素下的第index个子元素或奇偶元素(index从1开始算起)
+            // alert($('div span:nth-child(2)').text(())
+            //8.  :nth:last-child(index/even/odd):  取每个父元素下的第index个子元素，从最后一个往第一个数(index从1开始算起)
+            // alert($("div span:nth-last-child(2)").text(())
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src='./myutils.js'></script>
+  <script type="text/javascript" src='./jquery1.x.js'></script>
+  <script type="text/javascript" src='./template-web.js'></script>
+  <!-- 1、模板的type=text/html  2、给模板配一个id -->
+
+  <script type="text/html" id='resultTemplate'>
+    <!-- 我的理解是 将传进来的 data数据里的s提取出来 给 value ,i为从0开始-->
+    {{each s value i}}  
+      <li>
+        <div>      
+          <span>结果{{i+1}}:</span>
+          <span>{{value}}</span>
+        </div>
+      </li>
+    {{/each}}
+  </script>
+  
+    <script type="text/html" id='resultTemplate1'>
+    <!-- ul外面加一层div时 -->
+    <ul>
+    {{each s as value i}}  
+      <li>
+        <div>      
+          <span>结果{{i+1}}:</span>
+          <span>{{value}}</span>
+        </div>
+      </li>
+    {{/each}}
+    </ul>
+  </script>
+  <script type="text/javascript">
+    window.onclick=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var keywordValue=document.querySelector('#keyword').value;
+        // myAjax({
+        //   url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+        //   data:{wd:keywordValue},
+        //   success:function(data){  
+        //     var Itag='';      
+        //     for(var i=0;i<data.s.length;i++){
+        //       Itag+='<li>'+data.s[i]+'</li>'
+        //     }    
+        //       var ulTag=document.querySelector('ul');
+        //       ulTag.innerHTML=Itag;   
+        //   },
+        //   jsonp:'cb',
+        //   jsonpCallback:'haha'
+        // })   
+
+        $.ajax({
+          url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+          data:{wd:keywordValue},
+          success:function(data){  
+            var Itag='';
+            //template 方法的含义是将数据和模板结合起来，生成html片段
+            var html=template('resultTemplate',data);
+            var html1=template('resultTemplate1',data);
+            // for(var i=0;i<data.s.length;i++){
+            //   Itag+='<li>'+data.s[i]+'</li>'
+            // }    
+            //   var ulTag=document.querySelector('ul');
+            //   ulTag.innerHTML=Itag;   
+            var ulTag=document.querySelector('ul');
+            ulTag.innerHTML=html;
+
+            var box=document.querySelector("#box")
+            box.innerHTML=html1;
+          },
+          dataType:'jsonp',
+          jsonp:'cb',
+          jsonpCallback:'haha'          
+        })
+    }
+  }
+  </script>
+</head>
+<body>
+  <input type="text" id='keyword'>
+  <input type="button" id='btn' value='查询'>
+  <ul>
+  </ul>
+
+  <!-- 如果ul外面想加一层div -->
+    <div id="box">
+      <ul></ul>
+    </div>
+</body>
+</html>

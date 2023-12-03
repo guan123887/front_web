@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+    <style>
+        tbody tr td{
+            text-align: center;
+        }
+
+        td{
+            width:100px;
+        }
+        /*奇数行样式*/
+        .odd{
+            background: #FFFFEE;
+        }
+        /*偶数行样式*/
+        .even{
+            background: #fff38f;
+        }
+        .selected{
+            background: #ff6500;
+            color:#fff;
+        }
+        .over{
+            background: green;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>暂住地</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="checkbox" name="choice" value=""></td>
+            <td>张山</td>
+            <td>男</td>
+            <td>浙江宁波</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="choice" value=""></td>
+            <td>李四</td>
+            <td>女</td>
+            <td>浙江杭州</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="choice" value=""></td>
+            <td>王五</td>
+            <td>男</td>
+            <td>湖南长沙</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="choice" value="" checked="checked"></td>
+            <td>赵六</td>
+            <td>男</td>
+            <td>浙江杭州</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="choice" value=""></td>
+            <td>Rain</td>
+            <td>男</td>
+            <td>浙江杭州</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="choice" value=""></td>
+            <td>MAXMAN</td>
+            <td>女</td>
+            <td>浙江杭州</td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    $(function () {
+        $("tbody>tr:odd").addClass('odd')
+        $("tbody>tr:even").add("even")
+        // $("tbody>tr").bind("click",function () {
+        //     var hasSelected=$(this).hasClass("selected")    //获取当前tr是否被选中
+        //     if(hasSelected){
+        //         //选中 一处选中并设置属性为未勾选
+        //         $(this).removeClass("selected").find(":checkbox").attr("checked",false);
+        //     }
+        //     else{
+        //         $(this).addClass("selected").find(":checkbox").attr("checked",true);
+        //     }
+        // }).bind('mouseover',function () {
+        //     $(this).addClass('over').siblings().removeClass('over')
+        // })
+
+        //bind可以简化成以下绑定事件形式
+        $("tbody>tr").click(function () {
+            var hasSelected=$(this).hasClass("selected")    //获取当前tr是否被选中
+            if(hasSelected){
+                //选中 一处选中并设置属性为未勾选
+                $(this).removeClass("selected").find(":checkbox").attr("checked",false);
+            }
+            else{
+                $(this).addClass("selected").find(":checkbox").attr("checked",true);
+            }
+        }).mouseover(function () {
+            $(this).addClass('over').siblings().removeClass('over')
+        })
+
+        $("tbody>tr:has(:checked)").addClass('selected')
+    })
+</script>
+</body>
+</html>

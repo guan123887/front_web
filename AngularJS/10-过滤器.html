@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./angular.min.js"></script>
+</head>
+<body>
+<!--    <div ng-app="myApp" ng-controller="myCtrl">-->
+<!--        &lt;!&ndash;|uppercase 格式化大写&ndash;&gt;-->
+<!--        <p>姓名为: {{lastName|uppercase}}</p>-->
+<!--        &lt;!&ndash;|lowercase  格式化小写    &ndash;&gt;-->
+<!--        <p>姓名为: {{lastName|lowercase}}</p>-->
+<!--        &lt;!&ndash; |currency 将数字格式化货币格式 &ndash;&gt;-->
+<!--        <input type="number" ng-model="quantity">-->
+<!--        <input type="number" ng-model="price">-->
+<!--        <p>总价: {{quantity*price|currency}}</p>-->
+<!--        &lt;!&ndash; |orderBy  根据表达式排列数组   &ndash;&gt;-->
+        <!-- 自定义过滤器       -->
+<!--        <p>姓名为:{{msg|reverse}}</p>-->
+<!--</div>-->
+
+<div ng-app="myApp" ng-controller="nameCtrl">
+    <p>循环对象:</p>
+    <ul>
+        <li  ng-repeat="x in names|orderBy:'country'">
+            {{x.name+' '+x.country}}
+        </li>
+    </ul>
+    <!-- |filter从数组中选择一个子集    -->
+
+    <p>输入过滤:</p>
+    <p><input type="text" ng-model="test"></p>
+    <ul>
+        <li ng-repeat="x in names|filter:test|orderBy:'country'">
+            {{(x.name|uppercase)+','+x.country}}
+        </li>
+    </ul>
+    <script src="./namesController.js"></script>
+</div>
+
+<!--    <script>-->
+<!--        //自定义过滤器 将字符串反转-->
+<!--        var app=angular.module('myApp',[]);-->
+<!--        app.controller('myCtrl',function ($scope) {-->
+<!--            $scope.lastName='lisi';-->
+<!--            $scope.msg='Runoob';-->
+<!--        });-->
+
+<!--        app.filter('reverse',function () {  //可以注入依赖-->
+<!--            return function (text) {-->
+<!--                return text.split("").reverse().join("");-->
+<!--            }-->
+<!--        })-->
+<!--    </script>-->
+</body>
+</html>

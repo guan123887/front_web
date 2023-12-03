@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript">
+    window.onclick=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var keywordValue=document.querySelector('#keyword').value;
+        var script=document.createElement('script');
+        script.src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+keywordValue+"&cb=haha";
+        window['haha']=function(data){  
+          var Itag='';      
+          for(var i=0;i<data.s.length;i++){
+            Itag+='<li>'+data.s[i]+'</li>'
+          }    
+            var ulTag=document.querySelector('ul');
+            ulTag.innerHTML=Itag;     
+        }
+        var head=document.querySelector('head');
+        head.appendChild(script);
+      }
+    }
+  </script>
+</head>
+<body>
+  <input type="text" id='keyword'>
+  <input type="button" id='btn' value='查询'>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+</html>

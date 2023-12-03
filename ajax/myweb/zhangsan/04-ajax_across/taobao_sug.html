@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript">
+    window.onload=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var keywordvalue=document.querySelector('#keyword').value;
+        var script=document.createElement('script');
+        script.src='https://suggest.taobao.com/sug?q='+keywordvalue+'&callback=hehe';
+        window['hehe']=function(data){  
+          console.log(data);     
+          var liTag='';
+          for(var i=0;i<data.result.length;i++){
+            liTag+="<li>"+data.result[i][0]+"</li>";
+          }
+          var uLtag=document.querySelector('ul');
+          uLtag.innerHTML=liTag;
+        }
+        var head=document.querySelector('head');
+        head.appendChild(script);
+      }; 
+    };
+  </script>
+</head>
+<body>
+  <input type="text" id='keyword' placeholder="请输入相关的关键词">
+  <input type="button" id='btn' value='查询'>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+</body>
+</html>

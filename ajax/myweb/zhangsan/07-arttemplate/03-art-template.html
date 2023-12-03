@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src='template-web.js'></script>
+  <script type="text/html" id='Resulttemplate'>
+    {{each arr value i}}
+      <li>{{i+1}}:{{value}}</li>
+    {{/each}}
+  </script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var data=['文艺','博客','摄影','电影','民谣','旅行','吉他'];
+      var temp={};
+      temp.arr=data;
+
+      var html=template('Resulttemplate',temp);
+      document.querySelector('#content').innerHTML=html;
+    }
+  </script>
+</head>
+<body>
+  <div id="content">
+    
+  </div>
+</body>
+</html>

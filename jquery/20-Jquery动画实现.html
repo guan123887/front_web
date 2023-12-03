@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+    <style>
+        input{
+            border:1px solid #000;
+            font-size: 13px;
+            padding: 4px;
+            font-family: Arial,Helvetica,sans-serif;
+            background-color: #fff;
+            color:#000;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Hide">
+    <input type="button" value="Show">
+    <input type="button" value="toggle">
+    <input type="button" value="FadeOut">
+    <input type="button" value="FadeIn">
+    <input type="button" value="FadeToggle">
+    <input type="button" value="FadeTo">
+    <input type="button" value="slideUp">
+    <input type="button" value="slideDown">
+    <input type="button" value="slideToggle">
+    <p><img src="./images/back.png" alt=""></p>
+
+    <script>
+        $(function () {
+            //设置鼠标放上样式
+            $('input').mouseenter(function () {
+                $(this).css('color','#f00')
+            })
+            //设置鼠标离开样式
+            $('input').mouseleave(function () {
+                $(this).css('color','#000')
+            })
+            //hide()    隐藏
+            $('input:eq(0)').click(function () {
+                $('img').hide(3000,function () {    //3000 可以设置成fast normal slow
+                    alert('完成了')
+                });    //第二个参数默认为swing
+            })
+
+            //show()    显示
+            $('input:eq(1)').click(function () {
+                $('img').show(3000);    //第二个参数默认为swing
+            })
+
+            //toggle    隐藏时变显示  显示时变隐藏
+            $('input:eq(2)').click(function () {
+                $('img').toggle(3000);    //第二个参数默认为swing
+            })
+
+            //fadeOut()  不透明到透明
+            $('input:eq(3)').click(function () {
+                $('img').fadeOut(3000)
+            })
+
+            //fadeIn()  透明到不透明
+            $('input:eq(4)').click(function () {
+                $('img').fadeIn(3000)
+            })
+
+            //fadeToggle()  透明时不透明  不透明时透明
+            $('input:eq(5)').click(function () {
+                $('img').fadeToggle(3000)
+            })
+
+            //fadeTo()  从不透明到指定透明度
+            $('input:eq(6)').click(function () {
+                $('img').fadeTo(3000,0.2)
+            })
+
+            //slideUp()  元素从下往上
+            $('input:eq(7)').click(function () {
+                $('img').slideUp(3000)
+            })
+
+            //slideDown()  元素从上往下
+            $('input:eq(8)').click(function () {
+                $('img').slideDown(3000)
+            })
+
+            //sildeToggle()  替代slideUp和slideDown
+            $('input:eq(9)').click(function () {
+                $('img').slideToggle(3000)
+            })
+
+        })
+    </script>
+</body>
+</html>
+
+

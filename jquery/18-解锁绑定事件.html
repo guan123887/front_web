@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+    <style>
+        body{
+            margin:20px 40px;
+        }
+        p{
+            width:200px;
+            height:16px;
+            background: #888;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击我</button>
+    <div id="test"></div>
+    <button id="del1">删除所有事件</button>
+    <button id="del2">删除指定的事件</button>
+    <button id="del3">删除具有指定处理函数的事件</button>
+
+    <script>
+        $(function () {
+            $("#btn").click(myfun1=function(){
+                $('#test').append("<p>我的绑定函数1-click</p>")
+            }).mouseout(function () {
+                $("#test").append("<p>我的绑定函数2-mouseout</p>")
+            }).click(function () {
+                $("#test").append("<p>我的绑定函数3-click</p>")
+            })
+
+            $("#del1").click(function () {
+                //解除所有绑定事件
+                $("#btn").unbind()
+            })
+
+            $("#del2").click(function () {
+                //删除指定绑定事件
+                $("#btn").unbind("mouseout")
+            })
+
+            $("#del3").click(function () {
+                //删除具有指定处理函数的事件
+                $("#btn").unbind('click',myfun1)
+            })
+        })
+
+    </script>
+</body>
+</html>

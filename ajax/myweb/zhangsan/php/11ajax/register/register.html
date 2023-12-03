@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>注册界面</title>
+  <script type="text/javascript">
+    window.onload=function(){
+      var btn=document.getElementById('btn');
+      btn.onclick=function(){
+        var username=document.getElementById('username').value;
+        //使用js代码jinxingcheckUsername.php 这个文件的访问，将username传递给这个文件
+
+
+        //ajax四步骤
+
+        //1.创建XMLHttpRequest这个对象
+        var xhr=null;
+        //判断是否存在XMLHttpRequest(IE6没有此对象)
+        if(window.XMLHttpRequest){
+          xhr=new XMLHttpRequest();
+        }else{
+          //IE6浏览器
+          xhr=new ActiveXobject('Microsoft.XMLHTTP');
+        }
+
+        //2.准备发送
+        xhr.open('get','checkUsername.php?username='+username,true);   //true 代表同步  false 代表异步
+
+        // xhr.open('post','checkUsername.php',true);  
+
+        //3.发送请求(执行发送) 
+        //get请求
+        xhr.send(null);
+
+        //post请求
+        var param='username'+username;
+        //如果是post请求,还需要把参数放到请求体中
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(param);
+
+        //4.设置回调函数
+        xhr.onreadystatechange=function(){
+          //判断xhr状态
+          if(xhr.readyState==4){
+            //判断服务器所返回的状态
+            if(xhr.status==200){
+              //得到返回数据
+              //xhr.responseXML
+              var result=xhr.responseText;
+              var show=document.querySelector('#result');
+              show.innerText=result;
+            }
+          }
+
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>注册界面</h1>
+  <form action="register.php" method='get'>
+    用户名:<input type="text" name='username' id='username'>
+    <input type="button" value='验证用户名' id='btn'>
+    <span id='result'></span>
+    <br>
+    密码:<input type="password" name="password"> 
+    <br>
+    <input type="submit" value='提交'><br>
+  </form>
+</body>
+</html>

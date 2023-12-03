@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src='./myutils.js'></script>
+  <script type="text/javascript" src='./jquery1.x.js'></script>
+  <script type="text/javascript">
+    window.onclick=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var keywordValue=document.querySelector('#keyword').value;
+        myAjax({
+          url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+          data:{wd:keywordValue},
+          success:function(data){  
+            var Itag='';      
+            for(var i=0;i<data.s.length;i++){
+              Itag+='<li>'+data.s[i]+'</li>'
+            }    
+              var ulTag=document.querySelector('ul');
+              ulTag.innerHTML=Itag;   
+          },
+          jsonp:'cb',
+          jsonpCallback:'haha'
+        })   
+    }
+  }
+  </script>
+</head>
+<body>
+  <input type="text" id='keyword'>
+  <input type="button" id='btn' value='查询'>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+</html>

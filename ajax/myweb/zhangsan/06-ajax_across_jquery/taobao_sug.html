@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<!--   <script type="text/javascript" src='./myutils.js'></script> -->
+<script type="text/javascript" src='./jquery1.x.js'></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var btn=document.querySelector('#btn');
+      btn.onclick=function(){
+        var keywordvalue=document.querySelector('#keyword').value;
+          // myAjax({
+          //   url:'https://suggest.taobao.com/sug',
+          //   data:{q:keywordvalue},
+          //   success:function(data){
+          //     var Itag='';  
+          //     console.log(data);    
+          //     for(var i=0;i<data.result.length;i++){
+          //       Itag+='<li>'+data.result[i][0]+'</li>'
+          //     }    
+          //       var ulTag=document.querySelector('ul');
+          //       ulTag.innerHTML=Itag;    
+          //   }           
+          // })
+
+          //jquery获取封装方法
+          // 如果用jquery访问跨域数据,必须要用  dataType:'jsonp'
+          //key默认为callback
+          //value的值以jquery开头的字符串,这个字符串就是函数调用的名称
+          $.ajax({
+            url:'https://suggest.taobao.com/sug',
+            data:{q:keywordvalue},
+            success:function(data){
+              var Itag='';  
+              console.log(data);    
+              for(var i=0;i<data.result.length;i++){
+                Itag+='<li>'+data.result[i][0]+'</li>'
+              }    
+                var ulTag=document.querySelector('ul');
+                ulTag.innerHTML=Itag;    
+            },     
+            dataType:'jsonp',// json xml text 这三种数据可以用ajax的四个步骤进行同源地址数据获取   jsonp动态创建标签获取非同源地址数据获取
+            jsonp:'callback',
+            jsonpCallback:'hehe'                  
+          })
+      }
+    };
+  </script>
+</head>
+<body>
+  <input type="text" id='keyword' placeholder="请输入相关的关键词">
+  <input type="button" id='btn' value='查询'>
+
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+</body>
+</html>

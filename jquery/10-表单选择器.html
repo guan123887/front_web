@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery1.x.js"></script>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form name="'myform">
+        <input type="button" value="Input Button"><br>
+        <input type="checkbox" value="football"><br>
+        <input type="file" name="upload"><br>
+        <input type="hidden" value="ok"><br>
+        <input type="image" src="a.png">
+        <input type="password" name="pass" value="111"><br>
+        <input type="radio" value="male">male<br>
+        <input type="reset" value="重置"><br>
+        <input type="submit" value="提交"><br>
+        <input type="text" name="'name" value="chenhao"><br>
+        <input type="text" name="'age" value="age"><br>
+
+        <select>
+            <option>Option1</option>
+            <option>Option2</option>
+        </select><br>
+        <textarea cols="10" rows="5">多行文本框</textarea>
+        <button type="button">Button</button><br>
+        <input type="image" src="b.png"><br>
+        <img src="c.jpg" alt="">
+    </form>
+    <script>
+        $(function () {
+            //1. :input  选取所有<input>、<textarea>、<select>和<button>元素
+            // alert($(":input").length)
+            //2. :text  选取所有单行文本框（type='text') 2个
+            // alert($(":text").length)
+            //3. :password  选取所有密码框  (type=password)  1个
+            // alert($(":password").length)
+            //4 :radio  选取所有单选按钮       (type=radio)  1个
+            // alert($(":radio").val())
+            //5. :checkbox  选取所有复选框  (type=checkbox)  1个
+            // alert($(":checkbox").val())
+            //6. :submit  选取所有提交按钮  (type=submit)  2个
+            alert($(":submit").length)
+            // alert($(":submit").val())
+            //7. :image  选取所有图像按钮
+            // alert($(":image").length)
+            //8. :reset 选取所有重置按钮    (type=reset) 1个
+            // alert($(":reset").val())
+            //9. :button 选取所有按钮     (type=button)  2个
+            // alert($(":button").length)
+        })
+    </script>
+</body>
+</html>

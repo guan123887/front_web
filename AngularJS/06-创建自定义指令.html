@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<!--使用驼峰法来命名一个指令， openketangDirective, 但在使用它时需要以 - 分割, openketang-directive:-->
+<!--1.可以通过元素名 <openketang-directive></openketang-directive> 调用 -->
+<!--2.可以通过属性调用 <div openketang-directive></div>-->
+<!--3.可以通过类名调用 <div class="openketang-directive"></div>-->
+<!--4.可以通过注释调用--> <!--directive: openketang-directive -->
+<openketang-directive>
+
+</openketang-directive>
+<script>
+    var app=angular.module('myApp',[]);
+    app.directive('openketangDirective',function () {
+        return{
+            //可以通过restrict设置成'A' 来作为属性使用
+            /*restrict 值可以是以下几种:
+            E 作为元素名使用
+            A 作为属性使用
+            C 作为类名使用
+            M 作为注释使用
+            restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+            */
+            restrict : "A",
+            template:"<h1>自定义指令！</h1>"
+        }
+    })
+</script>
+</body>
+</html>

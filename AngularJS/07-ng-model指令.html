@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./angular.min.js"></script>
+    <style>
+        input.ng-invalid{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<!--特性1: 将输入域与创建变量绑定-->
+<!--<div ng-app="myApp" ng-controller="myCtrl">-->
+<!--    名字: <input ng-model="name">-->
+<!--</div>-->
+
+
+<!--特性2:双向绑定-->
+<!--<div ng-app="myApp" ng-controller="myCtrl">-->
+<!--    名字: <input ng-model="name">-->
+<!--    <h1>你输入了:{{name}}</h1>-->
+<!--</div>-->
+
+<!--特性3:验证用户输入-->
+<!--<form ng-app="" name="myForm">-->
+<!--    Email:-->
+<!--    <input type="email" name="myAddress" ng-model="text">-->
+<!--    <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span>-->
+<!--    <p>在输入框中输入你的邮箱地址，如果不是一个合法的邮箱地址，会弹出提示信息。</p>-->
+<!--</form>-->
+
+<!--特性4:应用状态  ng-model 指令可以为应用数据提供状态值(invalid, dirty, touched, error):-->
+<!--<form ng-app="" name="myForm" ng-init="myText='test@openketang.com'">-->
+<!--    Email:-->
+<!--    <input type="email" name="myAddress" ng-model="myText" required>-->
+<!--    <h1>状态</h1>-->
+<!--    <p>Valid: {{myForm.myAddress.$valid}} (如果输入的值是合法的则为 true)。</p>-->
+<!--    <p>Dirty: {{myForm.myAddress.$dirty}} (如果值改变则为 true)。</p>-->
+<!--    <p>Touched: {{myForm.myAddress.$touched}} (如果通过触屏点击则为 true)。</p>-->
+<!--</form>-->
+
+<!--特性5:CSS类-->
+<form ng-app="" name="myForm">
+    输入你的名字:
+    <input  name="myAddress" ng-model="text" required>
+    <p>编辑文本域，不同状态背景颜色会发生变化。</p>
+    <p>文本域添加了 required 属性，该值是必须的，如果为空则是不合法的。</p>
+</form>
+
+
+<!--注意:
+ng-model 指令根据表单域的状态添加/移除以下类：
+
+ng-empty
+
+ng-not-empty
+
+ng-touched
+
+ng-untouched
+
+ng-valid
+
+ng-invalid
+
+ng-dirty
+
+ng-pending
+
+ng-pristine-->
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function ($scope) {
+        $scope.name='John Doe';
+    })
+</script>
+</body>
+</html>

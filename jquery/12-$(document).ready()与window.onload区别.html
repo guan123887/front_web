@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery1.x.js"></script>
+</head>
+<body>
+
+<img src="./images/acr%20容器镜像服务.png" alt="">
+<script>
+    window.onload=function () {
+        alert('window'+$("img").width());
+    }
+    /*
+    另一种写法
+    $(window).load(function () {
+
+    })
+    */
+    $(function () {
+        alert('jquery'+$("img").width());
+    })
+
+</script>
+</body>
+</html>

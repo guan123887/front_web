@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div>
+    <span class="s"></span>
+    <p></p>
+    <lable id="l"></lable>
+    <a href="#"></a>
+    <b>heihei</b>
+</div>
+<script>
+    $(function () {
+        //1.选择div下的所有选择器赋予innerhtml
+        $("div *").html("我们是一家人");
+        //2.div 下的.s的标签赋予值
+        $("div .s").html("你好啊");
+        //3.div下的标签名修改字体颜色
+        $("div p").css('color',"red");
+        //4.给指定id属性标签添加内容
+        $("div #l").css('font-size',20);
+        //5.将每一个选择器匹配到的元素合并到一起
+        $('.s,#l,a,b').css('background-color','purple');
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.2.1/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>可见</li>
+        <li style="display: none">不可见</li>
+    </ul>
+    <script>
+        $(function () {
+            //1.获取不可见元素的值
+            // alert($("li:hidden").html())
+            //2.获取可见元素的值
+            alert($("li:visible").html())
+        })
+    </script>
+</body>
+</html>

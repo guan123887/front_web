@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>学生信息</title>
+    <style type="text/css">
+    *{
+      padding: 0;
+      margin:0;
+    }
+    div{
+      width:800px;
+      margin:100px auto;
+    }
+    table{
+      width:800px;
+      border-collapse: collapse;      
+    }
+    th{
+      background:#0094ff;
+      color:white;
+      font-size:16px;
+      text-align: center;
+      padding:5px;
+      border:1px solid #000; 
+    }
+    td{
+      text-align: center;
+      padding:5px;
+      border:1px solid black;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var xhr=new XMLHttpRequest();
+      xhr.open('get','./server/getStudent.php',true);
+      xhr.send(null);
+
+      var newHtml=document.querySelector('.bookContainer').innerHTML;
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==2){
+          if(xhr.status==200){
+            var result=xhr.responseText;
+            console.log(result);
+            result=JSON.parse(result);
+            for(var i=0;i<result.length;i++){
+              var item=result[i];
+              var name=item.name;
+              var sex=item.sex;
+              var age=item.age;
+              var tempHtml="<tr><td>"+name+"</td><td>"+sex+"</td><td>"+age+"</td></tr";
+              newHtml+=tempHtml;
+            }
+            ocument.querySelector('.bookContainer').innerHTML=newHtml;
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+    <div>
+    <table class='bookContainer'>
+      <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

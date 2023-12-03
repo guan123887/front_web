@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>书籍列表</title>
+  <style type="text/css">
+    *{
+      padding: 0;
+      margin:0;
+    }
+    div{
+      width:800px;
+      margin:100px auto;
+    }
+    table{
+      width:800px;
+      border-collapse: collapse;      
+    }
+    th{
+      background:#0094ff;
+      color:white;
+      font-size:16px;
+      text-align: center;
+      padding:5px;
+      border:1px solid #000; 
+    }
+    td{
+      text-align: center;
+      padding:5px;
+      border:1px solid black;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload=function(){
+      var xhr=new XMLHttpRequest();
+
+      xhr.open('get','./server/getBooks.php',true);
+      xhr.send(null);
+      xhr.onreadystatechange=function(){
+        if(xhr.readyState==4){
+          if(xhr.status==200){
+            var result=xhr.responseXML;
+            var books=result.getElementsByTagName('booklist')[0].getElementsByTagName('book');
+            var tr=document.querySelector('.add');
+            var newHtml=document.querySelector('.bookContainer').innerHTML;
+            for(var i=0;i<books.length;i++){
+              var itembook=books[i];
+              var name=itembook.getElementsByTagName('name')[0].textContent;;
+              var author=itembook.getElementsByTagName('author')[0].textContent;
+              var desc=itembook.getElementsByTagName('desc')[0].textContent;
+              var tempHtml='<tr><td>'+name+'</td>'+'<td>'+author+'</td>'+'<td>'+desc+'</td></tr>';
+              newHtml+=tempHtml;
+          }
+            document.querySelector('.bookContainer').innerHTML=newHtml;
+            }         
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <table class='bookContainer'>
+      <tr>
+        <th>书名</th>
+        <th>作者</th>
+        <th>描述</th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
